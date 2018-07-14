@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Controls = ({ onFirstClick }) =>
+const Controls = ({ handleClick }) =>
   <div>
-    <button onClick={onFirstClick}>First</button>
-    <button>Previous</button>
-    <button>Random</button>
-    <button>Next</button>
-    <button>Last</button>
+    <button onClick={() => handleClick('first')}>First</button>
+    <button onClick={() => handleClick('previous')}>Previous</button>
+    <button onClick={() => handleClick('random')}>Random</button>
+    <button onClick={() => handleClick('next')}>Next</button>
+    <button onClick={() => handleClick('last')}>Last</button>
   </div>
 
 

@@ -12,10 +12,12 @@ class App extends Component {
       comicURL: '',
       newest: null
     }
-    this.onFirstClick = this.onFirstClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
-  onFirstClick() {
-    this.setState({comicURL: "https://imgs.xkcd.com/comics/barrel_cropped_(1).jpg"});
+  handleClick(button) {
+    if (button === 'first') {
+      this.setState({comicURL: "https://imgs.xkcd.com/comics/barrel_cropped_(1).jpg"});
+    }
   }
 
   render() {
@@ -24,7 +26,7 @@ class App extends Component {
         <h1>xkcd comics</h1>
         <Controls
           newest={this.state.newest}
-          onFirstClick={this.onFirstClick}
+          handleClick={this.handleClick}
         />
         <Comic
           comicURL={this.state.comicURL}
