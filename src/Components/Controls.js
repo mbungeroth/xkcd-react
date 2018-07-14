@@ -9,5 +9,4 @@ const Controls = ({ handleClick }) =>
     <button onClick={() => handleClick('last')}>Last</button>
   </div>
 
-
 export default Controls;
