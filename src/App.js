@@ -20,11 +20,18 @@ class App extends Component {
   }
   handleClick(button) {
     if (button === 'first') {
-      this.setState({
-        comicURL: 'https://imgs.xkcd.com/comics/barrel_cropped_(1).jpg',
-      });
+      this.processComicFetch(`${PATH_BASE}1${PATH_END}`);
     } else if (button === 'previous') {
-      proxiedFetch(`${PATH_BASE}${this.state.current - 1}${PATH_END}`)
+      this.processComicFetch(`${PATH_BASE}${this.state.current - 1}${PATH_END}`);
+    } else if (button === 'next') {
+      this.processComicFetch(`${PATH_BASE}${this.state.current + 1}${PATH_END}`);
+    } else if (button === 'last') {
+      this.processComicFetch(`${PATH_BASE}${this.state.newest}${PATH_END}`);
+    }
+  }
+
+  processComicFetch(url) {
+    proxiedFetch(url)
         .then(response => response.json())
         .then(result => {
           this.setState({
@@ -34,7 +41,6 @@ class App extends Component {
           });
         })
         .catch(error => console.log(error));
-    }
   }
 
   render() {
