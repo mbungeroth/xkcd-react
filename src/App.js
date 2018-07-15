@@ -27,6 +27,9 @@ class App extends Component {
       this.processComicFetch(`${PATH_BASE}${this.state.current + 1}${PATH_END}`);
     } else if (button === 'last') {
       this.processComicFetch(`${PATH_BASE}${this.state.newest}${PATH_END}`);
+    } else if (button === 'random') {
+      let randomID = Math.floor(Math.random() * Math.floor(this.state.newest + 1));
+      this.processComicFetch(`${PATH_BASE}${randomID}${PATH_END}`);
     }
   }
 
