@@ -57,17 +57,21 @@ class App extends Component {
       <div className="container">
         <h1>xkcd comics</h1>
           <div className="controls-comics">
+            <Controls
+              newest={this.state.newest}
+              handleClick={this.handleClick}
+            />
+            <Comic
+              comicURL={this.state.comicURL}
+              title={this.state.title}
+              comicNumber={this.state.current}
+            />
             <div className="button-controls">
               <Controls
                 newest={this.state.newest}
                 handleClick={this.handleClick}
               />
             </div>
-            <Comic
-              comicURL={this.state.comicURL}
-              title={this.state.title}
-              comicNumber={this.state.current}
-            />
           </div>
         <h6>All comics courtesy of xkcd.com</h6>
       </div>

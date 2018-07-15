@@ -1,5 +1,6 @@
 .container {
   font-family: 'Gaegu', cursive;
+  font-size: 1.2em;
   color: antiquewhite;
   text-align: center;
 }
@@ -14,10 +15,27 @@
   box-shadow: 3px 1px 21px 2px rgb(32, 32, 32);
 }
 
-.button-controls {
-  margin-top: 20px;
-}
-
 h3 {
   margin: 0;
+}
+
+button {
+  width: 80px;
+  height: 40px;
+  margin: 6px;
+  background-color: rgb(230, 33, 230);
+  color: white;
+  border: 2px solid rgb(230, 33, 230);
+  border-radius: 5px;
+  font-family: 'Gaegu', cursive;
+  font-size: 1.03em;
+}
+
+button:hover {
+  background-color: white;
+  color: rgb(230, 33, 230);
+}
+
+button:focus {
+  outline: none;
 }
