@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Controls = ({ handleClick }) =>
-  <div>
+  <div className="buttons-controls">
     <button onClick={() => handleClick('first')}>First</button>
     <button onClick={() => handleClick('previous')}>Previous</button>
     <button onClick={() => handleClick('random')}>Random</button>
