@@ -14,7 +14,7 @@ class App extends Component {
       comicURL: '',
       newest: null,
       current: null,
-      title: ''
+      title: '',
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -22,28 +22,34 @@ class App extends Component {
     if (button === 'first') {
       this.processComicFetch(`${PATH_BASE}1${PATH_END}`);
     } else if (button === 'previous') {
-      this.processComicFetch(`${PATH_BASE}${this.state.current - 1}${PATH_END}`);
+      this.processComicFetch(
+        `${PATH_BASE}${this.state.current - 1}${PATH_END}`
+      );
     } else if (button === 'next') {
-      this.processComicFetch(`${PATH_BASE}${this.state.current + 1}${PATH_END}`);
+      this.processComicFetch(
+        `${PATH_BASE}${this.state.current + 1}${PATH_END}`
+      );
     } else if (button === 'last') {
       this.processComicFetch(`${PATH_BASE}${this.state.newest}${PATH_END}`);
     } else if (button === 'random') {
-      let randomID = Math.floor(Math.random() * Math.floor(this.state.newest + 1));
+      let randomID = Math.floor(
+        Math.random() * Math.floor(this.state.newest + 1)
+      );
       this.processComicFetch(`${PATH_BASE}${randomID}${PATH_END}`);
     }
   }
 
   processComicFetch(url) {
     proxiedFetch(url)
-        .then(response => response.json())
-        .then(result => {
-          this.setState({
-            comicURL: result.img,
-            current: result.num,
-            title: result.title
-          });
-        })
-        .catch(error => console.log(error));
+      .then(response => response.json())
+      .then(result => {
+        this.setState({
+          comicURL: result.img,
+          current: result.num,
+          title: result.title,
+        });
+      })
+      .catch(error => console.log(error));
   }
 
   render() {
@@ -51,7 +57,11 @@ class App extends Component {
       <div>
         <h1>xkcd comics</h1>
         <Controls newest={this.state.newest} handleClick={this.handleClick} />
-        <Comic comicURL={this.state.comicURL} />
+        <Comic
+          comicURL={this.state.comicURL}
+          title={this.state.title}
+          comicNumber={this.state.current}
+        />
         <h6>All comics courtesy of xkcd.com</h6>
       </div>
     );
@@ -65,7 +75,7 @@ class App extends Component {
           comicURL: result.img,
           newest: result.num,
           current: result.num,
-          title: result.title
+          title: result.title,
         });
       })
       .catch(error => console.log(error));
