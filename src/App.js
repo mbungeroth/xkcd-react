@@ -18,6 +18,7 @@ class App extends Component {
       alt: '',
       newestComic: false,
       firstComic: false,
+      isLoading: false,
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -67,6 +68,7 @@ class App extends Component {
       alt,
       newestComic,
       firstComic,
+      isLoading,
     } = this.state;
     return (
       <div className="container">
@@ -77,12 +79,17 @@ class App extends Component {
             isNewest={newestComic}
             isFirst={firstComic}
           />
+          {isLoading
+            ?
+          <p>Loading...</p>
+            :
           <Comic
-            comicURL={comicURL}
-            title={title}
-            comicNumber={current}
-            alt={alt}
+          comicURL={comicURL}
+          title={title}
+          comicNumber={current}
+          alt={alt}
           />
+          }
           <Controls
             handleClick={this.handleClick}
             isNewest={newestComic}
@@ -95,6 +102,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.setState({ isLoading: true });
     proxiedFetch('https://xkcd.com/info.0.json')
       .then(response => response.json())
       .then(result => {
@@ -105,6 +113,7 @@ class App extends Component {
           title: result.title,
           alt: result.alt,
           newestComic: true,
+          isLoading: false,
         });
       })
       .catch(error => console.log(error));
