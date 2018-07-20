@@ -60,7 +60,14 @@ class App extends Component {
   }
 
   render() {
-    const { comicURL, current, title, alt, newestComic, firstComic } = this.state;
+    const {
+      comicURL,
+      current,
+      title,
+      alt,
+      newestComic,
+      firstComic,
+    } = this.state;
     return (
       <div className="container">
         <h1>xkcd comics</h1>
