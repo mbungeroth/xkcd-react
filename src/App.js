@@ -79,17 +79,16 @@ class App extends Component {
             isNewest={newestComic}
             isFirst={firstComic}
           />
-          {isLoading
-            ?
-          <p>Loading...</p>
-            :
-          <Comic
-          comicURL={comicURL}
-          title={title}
-          comicNumber={current}
-          alt={alt}
-          />
-          }
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            <Comic
+              comicURL={comicURL}
+              title={title}
+              comicNumber={current}
+              alt={alt}
+            />
+          )}
           <Controls
             handleClick={this.handleClick}
             isNewest={newestComic}
