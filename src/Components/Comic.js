@@ -5,12 +5,17 @@ const imgStyle = {
   borderRadius: '3px',
 };
 
-const Comic = ({ comicURL, title, comicNumber }) => (
+const Comic = ({ comicURL, title, comicNumber, alt }) => (
   <div>
     <h3>
       xkcd #{comicNumber}: {title}
     </h3>
-    <img src={comicURL} alt="there should be a comic here" style={imgStyle} />
+    <img
+      src={comicURL}
+      alt="there should be a comic here"
+      style={imgStyle}
+      title={alt}
+    />
   </div>
 );
 

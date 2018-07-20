@@ -15,6 +15,7 @@ class App extends Component {
       newest: null,
       current: null,
       title: '',
+      alt: '',
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -47,6 +48,7 @@ class App extends Component {
           comicURL: result.img,
           current: result.num,
           title: result.title,
+          alt: result.alt,
         });
       })
       .catch(error => console.log(error));
@@ -62,6 +64,7 @@ class App extends Component {
             comicURL={this.state.comicURL}
             title={this.state.title}
             comicNumber={this.state.current}
+            alt={this.state.alt}
           />
           <Controls newest={this.state.newest} handleClick={this.handleClick} />
         </div>
@@ -79,6 +82,7 @@ class App extends Component {
           newest: result.num,
           current: result.num,
           title: result.title,
+          alt: result.alt,
         });
       })
       .catch(error => console.log(error));
