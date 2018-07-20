@@ -16,9 +16,12 @@ class App extends Component {
       current: null,
       title: '',
       alt: '',
+      newestComic: false,
+      firstComic: false,
     };
     this.handleClick = this.handleClick.bind(this);
   }
+
   handleClick(button) {
     if (button === 'first') {
       this.processComicFetch(`${PATH_BASE}1${PATH_END}`);
@@ -49,24 +52,35 @@ class App extends Component {
           current: result.num,
           title: result.title,
           alt: result.alt,
+          newestComic: result.num === this.state.newest,
+          firstComic: result.num === 1,
         });
       })
       .catch(error => console.log(error));
   }
 
   render() {
+    const { comicURL, current, title, alt, newestComic, firstComic } = this.state;
     return (
       <div className="container">
         <h1>xkcd comics</h1>
         <div className="controls-comics">
-          <Controls newest={this.state.newest} handleClick={this.handleClick} />
-          <Comic
-            comicURL={this.state.comicURL}
-            title={this.state.title}
-            comicNumber={this.state.current}
-            alt={this.state.alt}
+          <Controls
+            handleClick={this.handleClick}
+            isNewest={newestComic}
+            isFirst={firstComic}
           />
-          <Controls newest={this.state.newest} handleClick={this.handleClick} />
+          <Comic
+            comicURL={comicURL}
+            title={title}
+            comicNumber={current}
+            alt={alt}
+          />
+          <Controls
+            handleClick={this.handleClick}
+            isNewest={newestComic}
+            isFirst={firstComic}
+          />
         </div>
         <h6>All comics courtesy of xkcd.com</h6>
       </div>
@@ -83,6 +97,7 @@ class App extends Component {
           current: result.num,
           title: result.title,
           alt: result.alt,
+          newestComic: true,
         });
       })
       .catch(error => console.log(error));
